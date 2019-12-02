@@ -25,6 +25,7 @@ function loadUserInfo(){
         error: function(error_msg) {
             console.log("Info not available")
           alert((error_msg['responseText']));
+          window.location = './index.html'
         }
     });
 }
