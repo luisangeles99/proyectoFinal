@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="js/reservas.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="css/style2.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/component.css">
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="css/normalize.css">
+
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Macondo+Swash+Caps|Roboto" rel="stylesheet">
+    <title>Club Detail</title>
+</head>
+<section class="section section--menu" style="background-color: dimgray">
+        <h2 style="color: antiquewhite;">Nights</h2>
+      <nav class="menu menu--alonso" >
+        <ul class="menu__list">
+          <li class="menu__item"><a href="home.html" class="menu__link">Home</a></li>
+          <li class="menu__item"><a href="home.html" class="menu__link">Reserva</a></li>
+          <li class="menu__item menu__item--current"><a href="profile.html" class="menu__link">Perfil</a></li>
+          <li class="menu__item"><a href="#" id="logout" class="menu__link">Log Out</a></li>
+          <li class="menu__line"></li>
+        </ul>
+        
+      </nav>
+</section>
+    <body>
+            
+            <div class="tcat"><h2 style="text-align: center; font-weight: 400; font-size: 40px;">Reservaciones</h2x></div>
+            <div id="reserva-cont">
+            <div id="respuesta"></div>
+            <form>
+                <div style="margin: 5px 10px 5px 0px; float:right">
+                    <div style="float:left; margin-left:10px" id="profile-info">
+                        
+                    </div>
+                    <div style="float:left; margin-left:10px">
+                        <button id="update" type="submit" class="btn btn-info">
+                            <a href="updateUser.html">Actualizar</a></button>
+                        
+                    </div>
+                </div>
+            
+                <table  class="table table-hover">
+                    <tbody id="show-reservas">  
+                        <tr>
+                          
+                            <td><b>Id Reservacion</b></td>
+                            <td><b>Nombre</b></td>
+                            <td><b>Ubicacion</b></td>
+                            <td><b>Num. Personas</b></td>
+                            <td><b>Fecha</b></td>
+                            <td><b>Cantidad</b></td>
+                            <td><b>Estado</b></td>
+                            <td><b>check</b></td> 
+                        </tr>
+                        
+                </tbody>
+                </table>
+                <button type="reset" id="updateReserve" class="btn btn-warning">Actualizar</button>
+                <button id="pdf" type="submit" class="btn btn">PDF</button>
+                <button id="deleteReserve" class="btn btn-danger">Eliminar</button>
+            </form>
+            </div>
+            
+            
+            <script type="text/javascript" src="js/jquery.js"></script>
+            <script type="text/javascript" src="js/reservas.js"></script>
+            <script type="text/javascript" src="js/logout.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.1/jspdf.debug.js" integrity="" crossorigin="anonymous"></script>
+
+            </body>
+        
+        <footer>
+            <div>
+                <p>&copy; 2019 Nights Reservations. Todos los derechos reservados</p>
+                <nav>
+                    <ul>
+                        <li><a href="https://www.facebook.com/" target="_blank">&#xf09a;</a></li>
+                        <li><a href="https://twitter.com/?lang=es" target="_blank">&#xf099;</a></li>
+                        <li><a href="https://plus.google.com/discover?hl=es" target="_blank">&#xf0d5;</a></li>
+                        <li><a href="#">&#xf077;</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </footer>
+        <script>
+            $('#pdf').on('click', function(){
+            var total=document.getElementsByName('seleccionado');
+            for(var i = 0; i < total.length ; i++){
+              if(total[i].type == 'checkbox'){
+                if(total[i].checked == true){
+                  _id = total[i].value;
+                  var img = 'data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAASIAAAEiAQMAAABncE31AAAABlBMVEX///8AAABVwtN+AAABQUlEQVRoge2ZQQ6DMAwEI+UBeRJfz5N4AJJLbK9Dq7anmB66e4DUHk4r1iEthaL+Uk1cvVQp2661o6B6kEqk/A5qXM7e+fPaJZVEqRHSsXJqWNdJ3USJ4GUh9QNqJhOpWyiVlZWXvXzOL1ILKXH1hnjq3+Y2qXXUVMNAeNMjlUGFGy+7Ia+RSqTOngr7z2pj2eaDDQlSmdQYAxK+hPRJUrnUqPhK4+m6LyKVRs09kPVq+HOdD6SSKHsJLJnUkiaYD0gmUilUfIGVOPqBRzOZSKVRMXjjw9eBRiqZUnNUft6AZOpPD5NaTE2ZGzXM0SlNKpGaJw/YFz0dPxykEim/2zDedqzMoUYql/IUCq9cr/lFKpHCMHbDHCV1BwXAe/Xzf2CkVlFuybh6Mol9CrzLL1ILKQRRJJPVN8QTqTSKov5OD3vraJbZ5LHdAAAAAElFTkSuQmCC'
+                  var doc = new jsPDF()
+                  doc.setFontSize(20)
+                  doc.addImage(img, 'jpeg', 40, 40, 100, 100)
+                  doc.text('La reservacion tiene el id: ' + _id ,10, 10)
+                  doc.text('Gracias por utilizar Nights', 50,150)
+                  doc.save(_id + '.pdf')
+                  alert('PDF generado')
+                  break
+                }
+                else if(i == (total.length -1)){
+                  alert('None Selected')
+                }
+              }
+            }
+            
+          })
+            </script>
+</html>
